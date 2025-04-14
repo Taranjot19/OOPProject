@@ -45,6 +45,38 @@ namespace FinalProject
         
         private void PlayGame()
         {
+            while (!gameOver)
+            {
+                Console.Clear();
+                board.Dispaly();
+                Player currentPlayer = player[currentPlayerIndex];
+                Console.WriteLine($"{currentPlayer.Name}'s turn (
+                                  {currentPlayer.Symbol})");
+                    try {
+                        int column = currentPlayer.MakeMove(board);
+                        board.DropPiece(column, currentPlayer.Symbol);
+                        if (board.CheckWin(currentPlayer.Symbol))
+                        {
+                            EndGame($"{currentPlayer.Name}wins!);
+                                    }
+                                    else if (board.IsFull())
+                                    {
+                                        EndGame("The game is a draw!");
+                                    }
+                                    else
+                                    {
+                                        currentPlayerIndex = (currentPlayerIndex + 1) %
+                                            player.Length;
+                                    }
+                                    }
+                                    catch (InvalidMoveException ex)
+                                    {
+                                        Console.WriteLine(ex.Message);
+                                        Console.ReadKey();
+                                    }
+                    }
+                         }
+                                    
         }
         private void EndGame(string message)
         {
@@ -65,3 +97,4 @@ namespace FinalProject
         }
     }
 }
+    
