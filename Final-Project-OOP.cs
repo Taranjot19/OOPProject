@@ -80,9 +80,9 @@ namespace FinalProject
         }
         private void EndGame(string message)
         {
-            Consoel.Clear();
+            Consol.Clear();
             board.Display();
-            Consoel.WriteLine(message);
+            Console.WriteLine(message);
             gameOver = true;
 
             Console.Writeline("Press any key to play again or Q to quit...");
