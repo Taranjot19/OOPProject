@@ -80,11 +80,23 @@ namespace FinalProject
         }
         private void EndGame(string message)
         {
+            Consoel.Clear();
+            board.Display();
+            Consoel.WriteLine(message);
+            gameOver = true;
+
+            Console.Writeline("Press any key to play again or Q to quit...");
+            var key = Console.ReadKey();
+            if (key.KeyChar != 'q' && key.KeyChar != 'Q')
+            {
+                Console.Clear();
+                Start;
+            }
         }
         private int GetValidInput(int min, int max)
         {
         }
-        // have changed it 
+        //I have changed it 
     internal class Program
     {
         static char[,] board = new char[6, 7];
