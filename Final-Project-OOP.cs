@@ -13,7 +13,7 @@ namespace FinalProject
         private int currentPlayerIndex;
         private bool gameover;
         public void Start()
-            // ffygygygygy
+            
         {
             Console.WriteLine("Welcome to Connect Four!");
             InitializeGame();
@@ -95,6 +95,13 @@ namespace FinalProject
         }
         private int GetValidInput(int min, int max)
         {
+            int input;
+            while(!int.TryParse(Console.ReadLine(), out input ) || input < min || input > max)
+            {
+                Console.Write($"Invalid input.Enter a number between {min} and {max}:");
+            }
+            return input;
+        }
         }
         //I have changed it 
     internal class Program
