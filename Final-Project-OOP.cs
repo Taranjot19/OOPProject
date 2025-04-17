@@ -103,7 +103,26 @@ namespace FinalProject
             return input;
         }
         }
-        //I have changed it 
+        //I have changed it
+                public class GameBoard
+             {
+         private const int Rows = 6;
+        private  const int Columns = 7;
+                 private char[,]grid;
+                 public GameBoard()
+                 {
+                     grid = new Char[Rows, Columns];
+                     InitilizeBoard();
+                     private void InitializeBoard()
+                     {
+                         for (int row = 0; row < Rows; rows++)
+                         {
+                             for (int col =0; col < Columns; col++)
+                             {
+                                 grid[row,col]= '.';
+                             }
+                         }
+                     }
     internal class Program
     {
         static char[,] board = new char[6, 7];
