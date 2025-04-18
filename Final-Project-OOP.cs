@@ -141,6 +141,36 @@ namespace FinalProject
                      }
                      Console.WriteLine("--------------------------");
                  }
+                 private ConsoleColor Get SymbolColor(char symbol)
+                 {
+                     switch (symbol)
+                     {
+                         case 'X' : return ConsoleColor.Yellow;
+                             Case'O' :return ConsoleColor.Red;
+                         default: return ConsoleColor.White;
+                     }
+                 }
+                 public void DropPiece(int column, char symbol)
+                 {
+                     if (!Is ValidMove(column))
+                     {
+                         throw new InvalidMoveException("Invalid move. Column is either full or is out of the range..");
+                     }
+                     for (int row = Row - 1; row >=0; row--)
+                     {
+                         if(grid[row,column] == '.')
+                         {
+                             grid[row, column] = symbol;
+                             break;
+                         }
+                     }
+                 }
+                  public bool Is ValidMove(int Column)
+                  {
+                      return Column >= 0 && column < Cloumns && grid[0 , column]== ',';
+                  }
+                 public bool CheckWin(char symbol)
+                 
                  
 
                      
