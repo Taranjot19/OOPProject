@@ -112,6 +112,7 @@ namespace FinalProject
                  {
                      grid = new Char[Rows, Columns];
                      InitilizeBoard();
+                 }
                      private void InitializeBoard()
                      {
                          for (int row = 0; row < Rows; rows++)
@@ -122,6 +123,27 @@ namespace FinalProject
                              }
                          }
                      }
+
+                 public void Display()
+                 {
+                     Console.WriteLine("\n 1 2 3 4 5 6 7");
+                     for (int row - 0; row < Rows; row++)
+                     {
+                         Console.Write("|");
+                         for (int col = 0; col < Columns; col++)
+                         {
+                             Console.ForegroundColor = GetSymbolColor(grid[row, col]);
+                             Console.Write(grid[row, col]);
+                             Console.ResetColor();
+                             Console.Write("|");
+                         }
+                         Console.WriteLine();
+                     }
+                     Console.WriteLine("--------------------------");
+                 }
+                 
+
+                     
             static void Main(string[] args)
         {
         }
