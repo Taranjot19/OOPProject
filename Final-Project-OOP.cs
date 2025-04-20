@@ -199,6 +199,11 @@ namespace FinalProject
                          }
                      }
 
+                     return CheckDiagonalWin(symbol);
+                 }
+
+                 
+
                      
                      
                  
