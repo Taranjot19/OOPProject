@@ -165,11 +165,42 @@ namespace FinalProject
                          }
                      }
                  }
-                  public bool Is ValidMove(int Column)
+                  public bool IsValidMove(int Column)
                   {
                       return Column >= 0 && column < Cloumns && grid[0 , column]== ',';
                   }
                  public bool CheckWin(char symbol)
+                 {
+                     for (int row = 0; row < Rows; row++)
+                     {
+                         for (int col = 0; col < Columns - 3; col++)
+                         {
+                             if (grid[row, col] == symbol &&
+                                 grid[row, col + 1] == symbol &&
+                                 grid[row, col + 2] == symbol &&
+                                 grid[row, col + 3] == symbol)
+                             {
+                                 return true;
+                             }
+                         }
+                     }
+
+                     for (int row = 0; row < Rows - 3; row++)
+                     {
+                         for (int col = 0; col < Columns; col++)
+                         {
+                             if (grid[row, col] == symbol &&
+                                 grid[row + 1, col] == symbol &&
+                                 grid[row + 2, col] == symbol &&
+                                 grid[row + 3, col] == symbol)
+                             {
+                                 return true;
+                             }
+                         }
+                     }
+
+                     
+                     
                  
                  
 
