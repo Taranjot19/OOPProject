@@ -202,6 +202,10 @@ namespace FinalProject
                      return CheckDiagonalWin(symbol);
                  }
 
+                 private bool CheckDiagonalWin(char symbol)
+                 {
+                     
+
                  
 
                      
