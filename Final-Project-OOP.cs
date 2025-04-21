@@ -208,6 +208,15 @@ namespace FinalProject
             {
                 for (int col = 0; col < Columns - 3; col++)
                 {
+                    if (grid[row, col] == symbol &&
+                        grid[row + 1, col + 1] == symbol &&
+                        grid[row + 2, col + 2] == symbol &&
+                        grid[row + 3, col + 3] == symbol)
+                    {
+                        return true;
+                    }
+                }
+            }
                  
 
                  
