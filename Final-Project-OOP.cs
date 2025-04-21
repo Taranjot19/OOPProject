@@ -204,7 +204,11 @@ namespace FinalProject
 
                  private bool CheckDiagonalWin(char symbol)
                  {
-                     
+                     for (int row = 0; row < Rows - 3; row++)
+            {
+                for (int col = 0; col < Columns - 3; col++)
+                {
+                 
 
                  
 
