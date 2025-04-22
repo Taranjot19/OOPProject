@@ -154,8 +154,8 @@ namespace ConnectFour
         {
             switch (symbol)
             {
-                case 'X': return ConsoleColor.Orange;
-                case 'O': return ConsoleColor.Brown;
+                case 'X': return ConsoleColor.Red;
+                case 'O': return ConsoleColor.Blue;
                 default: return ConsoleColor.White;
             }
         }
