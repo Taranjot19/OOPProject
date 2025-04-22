@@ -285,7 +285,7 @@ namespace FinalProject
         {
                 var game = new ConnectFourGame();
                 game.Start();
-        }
+            }
     }
 }
     
