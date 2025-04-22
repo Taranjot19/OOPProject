@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    public class ConnectFour
+    public class ConnectFourGame
     {
         private Gameboard board;
         private bool gameover;
@@ -80,12 +80,12 @@ namespace FinalProject
         
         private void EndGame(string message)
         {
-            Consol.Clear();
+            Console.Clear();
             board.Display();
             Console.WriteLine(message);
             gameOver = true;
 
-            Console.Writeline("Press any of the key to play again or Q to quit thr game.");
+            Console.Writeline("Press any of the key to play again or Q to quit the game.");
             var key = Console.ReadKey();
             if (key.KeyChar != 'q' && key.KeyChar != 'Q')
             {
@@ -127,7 +127,7 @@ namespace FinalProject
                  public void Display()
                  {
                      Console.WriteLine("\n 1 2 3 4 5 6 7");
-                     for (int row - 0; row < Rows; row++)
+                     for (int row = 0; row < Rows; row++)
                      {
                          Console.Write("|");
                          for (int col = 0; col < Columns; col++)
@@ -141,7 +141,7 @@ namespace FinalProject
                      }
                      Console.WriteLine("--------------------------");
                  }
-                 private ConsoleColor Get SymbolColor(char symbol)
+                 private ConsoleColor GetSymbolColor(char symbol)
                  {
                      switch (symbol)
                      {
@@ -153,11 +153,11 @@ namespace FinalProject
                  }
                  public void DropPiece(int column, char symbol)
                  {
-                     if (!Is ValidMove(column))
+                     if (!IsValidMove(column))
                      {
-                         throw new InvalidMoveException("Invalid move. Column is either full or is out of the range..");
+                         throw new InvalidMoveException("Invalid move. Column is either full or out of the range..");
                      }
-                     for (int row = Row - 1; row >=0; row--)
+                     for (int row = Rows - 1; row >=0; row--)
                      {
                          if(grid[row,column] == '.')
                          {
@@ -166,7 +166,7 @@ namespace FinalProject
                          }
                      }
                  }
-                  public bool IsValidMove(int Column)
+                  public bool IsValidMove(int column)
                   {
                       return Column >= 0 && column < Columns && grid[0 , column]== '.';
                   }
@@ -220,9 +220,9 @@ namespace FinalProject
                 }
             }
                  
-           for (int row = 3; row <Rows; row++)
+           for (int row = 3; row < Rows; row++)
            {
-               for (int col = 0; col <Columns - 3; col++)
+               for (int col = 0; col < Columns - 3; col++)
                {
                    if (grid[row, col] == symbol &&
                        grid[row - 1, col + 1] == symbol &&
@@ -235,9 +235,9 @@ namespace FinalProject
            }
                      return false;
                  }
-                 public boolIsFull()
+                 public bool IsFull()
                  {
-                     for (int col = 0; col <Columns; col++)
+                     for (int col = 0; col < Columns; col++)
                      {
                          if (grid[0, col] == '.')
                          {
@@ -282,9 +282,9 @@ namespace FinalProject
                                     {
                                         private static readonly Random random = new Random();
 
-                                        private ComputerPlayer(char symbol, string name) : base(symbol, name) { }
+                                        public ComputerPlayer(char symbol, string name) : base(symbol, name) { }
 
-                                        private override int MakeMove(GameBoard board)
+                                        public override int MakeMove(GameBoard board)
                                         {
                                             Console.WriteLine("Computer is thinking...");
                                             System.Threading.Thread.Sleep(1000);
@@ -302,7 +302,7 @@ namespace FinalProject
                                                 }
                                             }
 
-                                            List<int> validColumns = newList<int>();
+                                            List<int> validColumns = new List<int>();
                                             for (int col = 0; col < 7; col++)
                                             {
                                                 if (board.IsValidMove(col))
@@ -322,10 +322,11 @@ namespace FinalProject
                             public static class GameBoardExtensions
                                     {
                                         public static GameBoard Clone(this GameBoard orginial)
-                                            var clone = new GameBoard();
-                                        for (int row = 0; row <6; row++)
                                         {
-                                            for (int col = 0; col <7; col++)
+                                            var clone = new GameBoard();
+                                        for (int row = 0; row < 6; row++)
+                                        {
+                                            for (int col = 0; col < 7; col++)
                                             {
                                                 if (original.IsValidMove(col))
                                                 {
@@ -337,7 +338,7 @@ namespace FinalProject
                                     }
                        public static char GetCell(this GameBoard board, int row, int col)
                                {
-                 var gridField =typeof(GameBoard).GetField("grid", System.Reflection.BindingFlags.NonPublic |
+                 var gridField = typeof(GameBoard).GetField("grid", System.Reflection.BindingFlags.NonPublic |
                                        System.Reflection.BindingFlags.Instance);
                                                           
                       var grid = (char[,]gridField.GetValue(board);
