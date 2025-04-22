@@ -15,7 +15,7 @@ namespace FinalProject
         public void Start()
             
         {
-            Console.WriteLine("Welcome to Connect Four!");
+            Console.WriteLine("Welcome to the Connect Four Game!!");
             InitializeGame();
             PlayGame();
         }
@@ -24,10 +24,10 @@ namespace FinalProject
           board = new GameBoard();
             gameOver = false;
             
-            Console.WriteLine("Select game mode: ");
+            Console.WriteLine("Select the game mode: ");
             Console.WriteLine("1. Two Players");
             Console.WriteLine("2. Player vs Computer");
-            Console.Write("Enter choice (1-2): ");
+            Console.Write("Enter your choice (1-2): ");
             
             int choice = GetValidInput(1, 2);
             players = new Player[2];
@@ -61,7 +61,7 @@ namespace FinalProject
                                     }
                                     else if (board.IsFull())
                                     {
-                                        EndGame("The game is a draw!");
+                                        EndGame("The game is a DRAW!");
                                     }
                                     else
                                     {
@@ -85,7 +85,7 @@ namespace FinalProject
             Console.WriteLine(message);
             gameOver = true;
 
-            Console.Writeline("Press any key to play again or Q to quit...");
+            Console.Writeline("Press any of the key to play again or Q to quit thr game.");
             var key = Console.ReadKey();
             if (key.KeyChar != 'q' && key.KeyChar != 'Q')
             {
@@ -145,8 +145,8 @@ namespace FinalProject
                  {
                      switch (symbol)
                      {
-                         case 'X' : return ConsoleColor.Yellow;
-                             Case'O' :return ConsoleColor.Red;
+                         case 'X' : return ConsoleColor.Brown;
+                             Case'O' :return ConsoleColor.Orange;
                          default: return ConsoleColor.White;
                      }
                  }
@@ -218,7 +218,21 @@ namespace FinalProject
                 }
             }
                  
-
+           for (int row = 3; row <Rows; row++)
+           {
+               for (int col = 0; col <Columns - 3; col++)
+               {
+                   if (grid[row, col] == symbol &&
+                       grid[row - 1, col + 1] == symbol &&
+                       grid[row - 2, col +2] == symbol &&
+                       grid[row - 3, col + 3] == symbol)
+                   {
+                       return true;
+                   }
+               }
+           }
+                     return false;
+                 }
                  
 
                      
