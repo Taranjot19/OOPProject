@@ -243,6 +243,8 @@ namespace FinalProject
                      
             static void Main(string[] args)
         {
+                var game = new ConnectFourGame();
+                game.Start();
         }
     }
 }
