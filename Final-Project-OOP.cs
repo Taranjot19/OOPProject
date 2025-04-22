@@ -246,13 +246,39 @@ namespace FinalProject
                  }
              }
                  
-
-
-                                    
+               public static InvalidMoveException : Exception
+                                    {
+                                        public InvalidMoveException(string message) : base(message) { }
+                                    }
+                            public static class GameBoardExtensions
+                                    {
+                                        public static GameBoard Clone(this GameBoard orginial)
+                                            var clone = new GameBoard();
+                                        for (int row = 0; row <6; row++)
+                                        {
+                                            for (int col = 0; col <7; col++)
+                                            {
+                                                if (original.IsValidMove(col))
+                                                {
+                                                    clone.DropPiece(col, original.GetCell(row, col));
+                                                }
+                                            }
+                                        }
+                                        return clone;
+                                    }
+                       public static char GetCell(this GameBoard board, int row, int col)
+                               {
+                 var gridField =typeof(GameBoard).GetField("grid", System.Reflection.BindingFlags.NonPublic |
+                                       System.Reflection.BindingFlags.Instance);
+                                                          
+                      var grid = (char[,]gridField.GetValue(board);
+                                  return grid[row, col];
+                                  }
+                                  }
                      
                  
-                 
-            class Program 
+                     class Program 
+                                  
                     {
                      
             static void Main(string[] args)
