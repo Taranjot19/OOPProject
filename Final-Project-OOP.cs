@@ -277,8 +277,44 @@ namespace FinalProject
                                             return column - 1;
                                         }
                                     }
-                                    // TO DO COMPUTER CODE AND CUSTOM EXCETION
-                 
+
+                                    public class ComputerPlayer : Player
+                                    {
+                                        private static readonly Random random = new Random();
+
+                                        private ComputerPlayer(char symbol, string name) : base(symbol, name) { }
+
+                                        private override int MakeMove(GameBoard board)
+                                        {
+                                            Console.WriteLine("Computer is thinking...");
+                                            System.Threading.Thread.Sleep(1000);
+
+                                            for (int col = 0; col < 7; col++)
+                                            {
+                                                if (board.IsValidMove(col))
+                                                {
+                                                    var testBoard = board.Clone();
+                                                    testBoard.DropPiece(col, Symbol);
+                                                    if (testBoard.CheckWin(Symbol))
+                                                    {
+                                                        return col;
+                                                    }
+                                                }
+                                            }
+
+                                            List<int> validColumns = newList<int>();
+                                            for (int col = 0; col < 7; col++)
+                                            {
+                                                if (board.IsValidMove(col))
+                                                {
+                                                    validColumns.Add(col);
+                                                }
+                                            }
+
+                                            return validColumns[random.Next(validColumns.Count)];
+                                        }
+                                    }
+                                        
                public static InvalidMoveException : Exception
                                     {
                                         public InvalidMoveException(string message) : base(message) { }
