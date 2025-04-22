@@ -248,8 +248,25 @@ namespace FinalProject
                  }
              }
 
-                                    //  TODO ABSTRACT PLAYER CODE
-                                    // TO DO HUMAN PLAYERC CLASS CODE
+                                    public abstract class player
+                                    {
+                                        public char Symbol { get; }
+                                        public string Name { get; }
+
+                                        protected Player(char symbol, string name)
+                                        {
+                                            Symbol = symbol;
+                                            Name = name;
+                                        }
+
+                                        public abstract int MakeMove(GameBoard board);
+                                    }
+
+                                    public class HumanPlayer : Player
+                                    {
+                                        public HumanPlayer(char symbol, string name) : base(symbol, name) { }
+
+                                        
                                     // TO DO COMPUTER CODE AND CUSTOM EXCETION
                  
                public static InvalidMoveException : Exception
