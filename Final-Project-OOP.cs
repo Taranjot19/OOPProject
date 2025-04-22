@@ -9,9 +9,9 @@ namespace FinalProject
     public class ConnectFour
     {
         private Gameboard board;
-        private Player[] players;
-        private int currentPlayerIndex;
         private bool gameover;
+        private int currentPlayerIndex;
+       private Player[] players;
         public void Start()
             
         {
@@ -24,7 +24,7 @@ namespace FinalProject
           board = new GameBoard();
             gameOver = false;
             
-            Console.WriteLine("Select the game mode: ");
+            Console.WriteLine("Select the game mode that you want: ");
             Console.WriteLine("1. Two Players");
             Console.WriteLine("2. Player vs Computer");
             Console.Write("Enter your choice (1-2): ");
@@ -77,7 +77,7 @@ namespace FinalProject
                     }
                          }
                                     
-        }
+        
         private void EndGame(string message)
         {
             Consol.Clear();
@@ -145,8 +145,9 @@ namespace FinalProject
                  {
                      switch (symbol)
                      {
+                                 Case'O' :return ConsoleColor.Orange;
                          case 'X' : return ConsoleColor.Brown;
-                             Case'O' :return ConsoleColor.Orange;
+                         
                          default: return ConsoleColor.White;
                      }
                  }
@@ -167,7 +168,7 @@ namespace FinalProject
                  }
                   public bool IsValidMove(int Column)
                   {
-                      return Column >= 0 && column < Cloumns && grid[0 , column]== ',';
+                      return Column >= 0 && column < Columns && grid[0 , column]== '.';
                   }
                  public bool CheckWin(char symbol)
                  {
@@ -214,6 +215,7 @@ namespace FinalProject
                         grid[row + 3, col + 3] == symbol)
                     {
                         return true;
+                    
                     }
                 }
             }
@@ -245,6 +247,10 @@ namespace FinalProject
                      return true;
                  }
              }
+
+                                    //  TODO ABSTRACT PLAYER CODE
+                                    // TO DO HUMAN PLAYERC CLASS CODE
+                                    // TO DO COMPUTER CODE AND CUSTOM EXCETION
                  
                public static InvalidMoveException : Exception
                                     {
