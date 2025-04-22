@@ -1,8 +1,5 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Permissions;
-using System.Text;
-using System.Threading.Tasks;
+using System;
+using System.Collection.generic;
 
 namespace FinalProject
 {
@@ -12,8 +9,8 @@ namespace FinalProject
         private bool gameover;
         private int currentPlayerIndex;
        private Player[] players;
-        public void Start()
-            
+        
+        public void Start()   
         {
             Console.WriteLine("Welcome to the Connect Four Game!!");
             InitializeGame();
