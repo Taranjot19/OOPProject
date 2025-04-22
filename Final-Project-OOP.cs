@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace ConnectFour
 {
-    // Main game class
     public class ConnectFourGame
     {
         private GameBoard board;
@@ -108,7 +107,6 @@ namespace ConnectFour
         }
     }
 
-    // Game board class using 2D array
     public class GameBoard
     {
         private const int Rows = 6;
@@ -184,7 +182,6 @@ namespace ConnectFour
 
         public bool CheckWin(char symbol)
         {
-            // Check horizontal
             for (int row = 0; row < Rows; row++)
             {
                 for (int col = 0; col < Columns - 3; col++)
@@ -199,7 +196,6 @@ namespace ConnectFour
                 }
             }
 
-            // Check vertical
             for (int row = 0; row < Rows - 3; row++)
             {
                 for (int col = 0; col < Columns; col++)
@@ -214,13 +210,11 @@ namespace ConnectFour
                 }
             }
 
-            // Check diagonals
             return CheckDiagonalWin(symbol);
         }
 
         private bool CheckDiagonalWin(char symbol)
         {
-            // Top-left to bottom-right
             for (int row = 0; row < Rows - 3; row++)
             {
                 for (int col = 0; col < Columns - 3; col++)
@@ -235,7 +229,6 @@ namespace ConnectFour
                 }
             }
 
-            // Bottom-left to top-right
             for (int row = 3; row < Rows; row++)
             {
                 for (int col = 0; col < Columns - 3; col++)
@@ -266,7 +259,6 @@ namespace ConnectFour
         }
     }
 
-    // Abstract player class
     public abstract class Player
     {
         public char Symbol { get; }
@@ -280,8 +272,7 @@ namespace ConnectFour
 
         public abstract int MakeMove(GameBoard board);
     }
-
-    // Human player class
+    
     public class HumanPlayer : Player
     {
         public HumanPlayer(char symbol, string name) : base(symbol, name) { }
@@ -298,7 +289,6 @@ namespace ConnectFour
         }
     }
 
-    // Computer player class
     public class ComputerPlayer : Player
     {
         private static readonly Random random = new Random();
@@ -324,7 +314,6 @@ namespace ConnectFour
                 }
             }
 
-            // If no winning move, choose randomly
             List<int> validColumns = new List<int>();
             for (int col = 0; col < 7; col++)
             {
@@ -338,13 +327,11 @@ namespace ConnectFour
         }
     }
 
-    // Custom exception for invalid moves
     public class InvalidMoveException : Exception
     {
         public InvalidMoveException(string message) : base(message) { }
     }
 
-    // Extension method for cloning the board
     public static class GameBoardExtensions
     {
         public static GameBoard Clone(this GameBoard original)
