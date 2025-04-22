@@ -233,13 +233,27 @@ namespace FinalProject
            }
                      return false;
                  }
+                 public boolIsFull()
+                 {
+                     for (int col = 0; col <Columns; col++)
+                     {
+                         if (grid[0, col] == '.')
+                         {
+                             return false;
+                         }
+                     }
+                     return true;
+                 }
+             }
                  
 
-                     
-                     
-                 
-                 
 
+                                    
+                     
+                 
+                 
+            class Program 
+                    {
                      
             static void Main(string[] args)
         {
