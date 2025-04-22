@@ -247,7 +247,7 @@ namespace FinalProject
                      return true;
                  }
              }
-
+                                    
                                     public abstract class player
                                     {
                                         public char Symbol { get; }
@@ -266,7 +266,17 @@ namespace FinalProject
                                     {
                                         public HumanPlayer(char symbol, string name) : base(symbol, name) { }
 
-                                        
+                                        public override int MakeMove(GameBoard board)
+                                        {
+                                            Console.Write($"Enter column (1-7): ");
+                                            int column;
+                                            while (!int.TryParse(Console.ReadLine(), out column) || column < 1 || column > 7)
+                                            {
+                                                Console.Write("Invalid input. Enter a number between 1 and 7: ");
+                                            }
+                                            return column - 1;
+                                        }
+                                    }
                                     // TO DO COMPUTER CODE AND CUSTOM EXCETION
                  
                public static InvalidMoveException : Exception
